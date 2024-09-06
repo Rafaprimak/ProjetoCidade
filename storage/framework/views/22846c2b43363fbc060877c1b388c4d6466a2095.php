@@ -1,0 +1,1 @@
+<h3>Principal (view)</h3><?php /**PATH C:\Users\Giovane\Desktop\laravel\example-app\resources\views/site/principal.blade.php ENDPATH**/ ?>
