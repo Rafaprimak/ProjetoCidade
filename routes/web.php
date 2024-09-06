@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/contato', 'ContatoController@contato');
-Route::get('/', 'PrincipalController@principal');
-Route::get('/sobre-nos', 'SobreNosController@sobreNos');
+Route::get('/contato', 'ContatoController@contato')->name('contato');
+Route::get('/', 'PrincipalController@principal')->name('home');
+Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('sobreNos');
 
-Route::get('/paises', 'PaisController@index');
-Route::get('/paises/{nome}', 'PaisController@show');
+Route::get('/paises', 'PaisController@index')->name('paises.index');
+Route::get('/paises/{nome}', 'PaisController@show')->name('paises.show');

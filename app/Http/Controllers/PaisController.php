@@ -13,22 +13,28 @@ class PaisController extends Controller
             ['nome' => 'Chile', 'capital' => 'Santiago'],
         ];
 
-        //retornar a view
+        return view('paises.index', compact('paises'));
     }
 
     public function show($nome){
         
+        $p = [
+            'nome' => $nome,
+            'capital' => 'Desconhecida',
+        ];
         switch($nome){
             case 'Brasil':
-                echo 'Brasilia';
+                $p['capital'] = 'Brasilia';
                 break;
             case 'Argentina':
-                echo 'Buenos Aires';
+                $p['capital'] = 'Buenos Aires';
                 break;
             case 'Chile':
-                echo 'Santiago';
+                $p['capital'] = 'Santiago';
                 break;
         }
-        //retornar a view
+        
+        return view('paises.show', compact('p'));
+
     }
 }
