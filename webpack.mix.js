@@ -1,17 +1,22 @@
 const mix = require('laravel-mix');
-
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel applications. By default, we are compiling the CSS
- | file for the application as well as bundling up all the JS files.
- |
- */
+const tailwindcss = require('tailwindcss');
 
 mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+   .vue() // Adicione esta linha para configurar o Vue loader
+   .postCss('resources/css/app.css', 'public/css', [
+       tailwindcss('./tailwind.config.js'),
+   ]);
+
+mix.webpackConfig({
+    resolve: {
+        extensions: ['.js', '.json', '.vue'], // Certifique-se de que as extensões estão corretas
+    },
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            }
+        ]
+    }
+});
